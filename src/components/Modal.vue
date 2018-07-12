@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <label @click="close()" style="float: right; margin-right: 20px; margin-top: 10px; color: white; font-size: 40px">X</label>
+    <label @click="close()" style="float: right; margin-right: 3%; margin-top: 1%; color: white; font-size: 80px">X</label>
     <div id="main">
       <img src="../assets/iu.jpg" alt="iu" width="50%">
     </div>
@@ -22,11 +22,12 @@ export default {
 #container {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   background: rgb(0, 0, 0, 0.6);
-  z-index: 1;
+  z-index: 100;
+  top: 0;
 }
 #main{
-  margin: 5px;
+  margin-top: 55px;
 }
 </style>

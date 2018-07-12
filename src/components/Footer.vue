@@ -45,6 +45,14 @@ export default {
   margin: 10px;
   display: inline-block;
 }
+#left-contents{
+  margin-left: 0;
+  margin-right: 10%;
+}
+#center-contents{
+  margin-left: 10%;
+  margin-right: 10%;
+}
 #end-contents {
   color: gray;
 }
