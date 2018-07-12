@@ -1,6 +1,8 @@
 # vue-front
 
-> A Vue.js project
+> 테트리스 토이프로젝트 프론트단.
+>
+> [blog](http://1ilsang.blog.me/221317762059)
 
 ## Build Setup
 
@@ -24,4 +26,4 @@ npm run unit
 npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+made by 이상철
