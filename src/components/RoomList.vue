@@ -1,7 +1,7 @@
 <template>
   <div id="container">
       <ul id="list">
-        <li v-for="a in 5" :key="a">
+        <li v-for="a in 25" :key="a">
           <label @click="$EventBus.$emit('open')">Room Number : {{a}}</label>
         </li>
       </ul>

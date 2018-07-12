@@ -2,6 +2,7 @@
   <div id="app">
     <Modal v-if="modalToggle"></Modal>
     <Nav/>
+    <SubNav></SubNav>
     <router-view/>
     <Footer></Footer>
   </div>
@@ -11,6 +12,7 @@
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Modal from './components/Modal'
+import SubNav from './components/SubNav'
 
 export default {
   name: 'App',
@@ -22,7 +24,8 @@ export default {
   components: {
     Nav,
     Footer,
-    Modal
+    Modal,
+    SubNav
   },
   created () {
     this.$EventBus.$on('close', () => {
