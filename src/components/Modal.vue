@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <label @click="close()" style="float: right; margin-right: 3%; margin-top: 1%; color: white; font-size: 80px">X</label>
+    <label id="close" @click="close()">X</label>
     <div id="main">
       <img src="../assets/iu.jpg" alt="iu" width="50%">
     </div>
@@ -14,11 +14,29 @@ export default {
     close () {
       this.$EventBus.$emit('close')
     }
+  },
+  created () {
+    window.addEventListener('keyup', (event) => {
+      if (event.keyCode === 32) {
+        //  space-bar
+        console.log('no')
+      } else if (event.keyCode === 38) {
+        //  up
+      } else if (event.keyCode === 40) {
+        //  down
+      }
+    })
   }
 }
 </script>
 
 <style scoped>
+#close{
+  float: right; margin-right: 3%; margin-top: 1%; color: white; font-size: 80px;
+}
+#close:hover{
+  color: #00B7FF;
+}
 #container {
   width: 100%;
   height: 100%;

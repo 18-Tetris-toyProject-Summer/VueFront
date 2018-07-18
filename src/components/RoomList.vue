@@ -2,7 +2,7 @@
   <div id="container">
       <ul id="list">
         <li v-for="a in 25" :key="a">
-          <label @click="$EventBus.$emit('open')">Room Number : {{a}}</label>
+          <label @click="openRoom()">Room Number : {{a}}</label>
         </li>
       </ul>
   </div>
@@ -10,7 +10,19 @@
 
 <script>
 export default {
-  name: 'RoomList'
+  name: 'RoomList',
+  methods: {
+    openRoom () {
+      this.$EventBus.$emit('open')
+    }
+  },
+  created () {
+    window.onkeydown = function (event) {
+      if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40 || event.keyCode === 32) {
+        event.preventDefault()
+      }
+    }
+  }
 }
 </script>
 
@@ -21,7 +33,6 @@ export default {
 }
 label {
   text-decoration-line: underline;
-
 }
 label:hover{
   color: red;
