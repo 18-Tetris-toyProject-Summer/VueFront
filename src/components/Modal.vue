@@ -13,10 +13,8 @@ export default {
   methods: {
     close () {
       this.$EventBus.$emit('close')
-    }
-  },
-  created () {
-    window.addEventListener('keyup', (event) => {
+    },
+    keyupEvent (event) {
       if (event.keyCode === 32) {
         //  space-bar
         console.log('no')
@@ -25,7 +23,13 @@ export default {
       } else if (event.keyCode === 40) {
         //  down
       }
-    })
+    }
+  },
+  created () {
+    window.addEventListener('keyup', this.keyupEvent)
+  },
+  destroyed () {
+    window.removeEventListener('keyup', this.keyupEvent)
   }
 }
 </script>
