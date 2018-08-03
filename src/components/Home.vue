@@ -1,11 +1,7 @@
 <template>
   <div id="container">
-    <div style="width: 100%; ">
-      <div style="position: absolute; width: 100%">
-        <img id="fade-img" src="../assets/2.jpg" alt="first image" >
-      </div>
-      <h1 style="position: relative; margin-top: 0; margin-bottom:100%; padding-top: 20%;">Join us? </h1>
-    </div>
+    <img class="fade-img" src="../assets/test.jpg" alt="first image" >
+    <img class="fade-img" src="../assets/1.jpg" alt="first image" >
   </div>
 </template>
 
@@ -28,35 +24,23 @@ export default {
 #first-list, #second-list, #third-list {
 
 }
-#fade-img{
+.fade-img{
   animation: fadeImg 1.5s;
 }
 @keyframes fadeImg {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
 }
-
+div{
+  margin: 0;
+}
 img{
   width: 100%;
+  display:block;
 }
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-li {
-  margin: 0px;
-  padding: 0px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

@@ -13,7 +13,7 @@
       center contents
     </div>
     <div id="right-contents">
-      <a href="http://1ilsang.blog.me/">1ilsang blog</a>
+      <a href="http://1ilsang.blog.me/">1ilsang-blog</a> |
       right side contents
     </div>
     <div>
