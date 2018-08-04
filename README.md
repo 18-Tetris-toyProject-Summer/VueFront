@@ -1,8 +1,21 @@
-# vue-front
+# Vue-front
 
 > 테트리스 토이프로젝트 프론트단.
 >
-> [blog](http://1ilsang.blog.me/221317762059)
+> [My blog](http://1ilsang.blog.me/)
+
+## 개발 일지
+
+- 2018-07-02
+  - [2018 하계 방학 토이 프로젝트를 해봐야지 - 목표/기능설계/동선/기간](http://1ilsang.blog.me/221310669991)
+- 2018-07-04
+  - [유저 동선 설정 - Milestone 1](http://1ilsang.blog.me/221312070329)
+- 2018-07-12
+  - [Vue 프론트 메인, 모달 프로토타입](http://1ilsang.blog.me/221317762059)
+- 2018-08-03
+  - [[데모] 모달에서 테트리스 하나씩 떨어트리기 - watch](http://1ilsang.blog.me/221332263103)
+- 2018-08-04
+  - [웹 테트리스 만들기 - 상하좌우 움직이기(Rotation)](http://1ilsang.blog.me/221332633495)
 
 ## Build Setup
 
