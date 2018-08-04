@@ -90,6 +90,7 @@ export default {
     painting (value) {
       for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
+          //  FIXME 고정되어 있는 배경에 부딛혔을 때 처리해줘야 함.
           if (this.tetrisData[this.curType][this.curRotation] & (0x8000 >> i * 4 + j)) {
             if (value) {
               this.tetrisBoard[this.curPosition.x + i][this.curPosition.y + j] = value
