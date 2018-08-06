@@ -18,6 +18,10 @@
         </tr>
       </table>
       <img src="../assets/iu.jpg" style="width: 10%;" alt="">
+      <br>
+      <h2>sore: {{myScore}}</h2>
+      <br>
+      <h2>{{gameOverFlag ? 'gameOver' : 'play!'}}</h2>
     </div>
   </div>
 </template>
@@ -71,7 +75,8 @@ export default {
       maxY: 0,
       minY: 10,
       breakFlag: false,
-      myScore: 0
+      myScore: 0,
+      gameOverFlag: false
     }
   },
   watch: {
@@ -130,6 +135,7 @@ export default {
                 this.breakFlag = true
                 if (this.curPosition.x === 1) {
                   console.log('gameOver')
+                  this.gameOverFlag = true
                   this.stopGame()
                 }
                 break
