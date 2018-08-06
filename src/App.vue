@@ -11,7 +11,7 @@
 <script>
 import Nav from './components/Nav'
 import Footer from './components/Footer'
-import Modal from './components/Modal'
+import Modal from './components/TetrisModal'
 import SubNav from './components/SubNav'
 
 export default {
