@@ -128,13 +128,14 @@ export default {
         for (let j = 0; j < 4; j++) {
           //  FIXME 고정되어 있는 배경에 부딛혔을 때 처리해줘야 함.
           if (this.tetrisData[this.curType][this.curRotation] & (0x8000 >> i * 4 + j)) {
-            if (value === 'isCrash') {
+            if (value === 'isCrash' || value === 'isCrashFirst') {
+              console.log('cur x', this.curPosition.x + i)
               if ((this.tetrisBoard[this.curPosition.x + i][this.curPosition.y + j] !== 0 &&
                 this.tetrisBoard[this.curPosition.x + i][this.curPosition.y + j] !== '.') ||
                 this.curPosition.x + i + 1 === 21) {
                 this.breakFlag = true
-                if (this.curPosition.x === 1) {
-                  console.log('gameOver')
+                if (this.curPosition.x === 1 && value === 'isCrashFirst') {
+                  console.log('gameOver', this.curPosition.x)
                   this.gameOverFlag = true
                   this.stopGame()
                 }
@@ -159,6 +160,7 @@ export default {
         //  FIXME 제일 우축일때 회전이 부자연 스러움.
         if (this.maxY > 9 || this.minY < 0 || this.breakFlag === true) {
           this.curRotation = (this.curRotation - 1) % 4
+          if (this.curRotation === -1) this.curRotation = 3
           this.breakFlag = false
           this.painting(this.curColor)
         }
@@ -178,7 +180,7 @@ export default {
         }
       } else if (value === 40) { //  Down
         this.curPosition.x++
-        this.painting('isCrash')
+        this.painting('isCrashFirst')
         if (this.breakFlag === true) {
           //  TODO 게임오버 멈추는 로직
           this.curPosition.x--
@@ -186,6 +188,19 @@ export default {
           this.painting(this.curColor)
           this.checkLine()
           this.initTetrino()
+        }
+      } else if (value === 32) { // Space-bar
+        while (true) {
+          this.curPosition.x++
+          this.painting('isCrashFirst')
+          if (this.breakFlag === true) {
+            this.curPosition.x--
+            this.breakFlag = false
+            this.painting(this.curColor)
+            this.checkLine()
+            this.initTetrino()
+            break
+          }
         }
       }
       this.painting(this.curColor)
