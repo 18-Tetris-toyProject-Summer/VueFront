@@ -57,7 +57,7 @@
           </td>
         </tr>
       </table>
-      <table v-else="gameOverFlag === true" id="tetris-board-me">
+      <table v-else-if="gameOverFlag === true" id="tetris-board-me">
         <tr v-for="(iv, ik) in (tetrisBoard.length - 1)" :key="ik">
           <td v-for="(jv, jk) in tetrisBoard[ik]" :key="jk" style="opacity: 0.5">
             <div v-if="jv === 1" style="background: red;">0</div>
@@ -312,6 +312,7 @@ export default {
         }
       } else if (value === 32) { // Space-bar
         while (true) {
+          //  FIXME 최선인가? 한번에 내려서 확인하자
           this.curPosition.x++
           this.painting('isCrashFirst')
           if (this.breakFlag === true) {
@@ -334,7 +335,6 @@ export default {
       this.nextColor = Math.floor(Math.random() * (8 - 1)) + 1
       this.nextType = Math.floor(Math.random() * (8 - 1))
       this.initTetrino()
-      //  TODO Next에 그려줘야 함.
       this.painting(this.curColor)
       this.gameflag = setInterval(() => {
         //  한 줄씩 떨어지게 만든다.
