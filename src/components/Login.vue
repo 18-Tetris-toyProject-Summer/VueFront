@@ -3,7 +3,7 @@
     Hello World!<br>
     You can only do it this way. <p></p>
     <div>
-      <a :href=apiURL><img src='../assets/naver_login.png'/></a>
+      <a :href=naverLoginURL><img src='../assets/naver_login.png'/></a>
     </div>
   </div>
 </template>
@@ -17,18 +17,15 @@ export default {
       redirectURI: 'http%3a%2f%2flocalhost%3a8081%2flogin',
       //  FIXME state 값 random string 으로 변경
       state: 123,
-      apiURL: 'https://nid.naver.com/oauth2.0/authorize?response_type=code'
+      naverLoginURL: 'https://nid.naver.com/oauth2.0/authorize?response_type=code'
     }
   },
   methods: {
-    naverLogin () {
-      // console.log('go to naver')
-    }
   },
   created () {
-    this.apiURL += '&client_id=' + this.CLIENT_ID
-    this.apiURL += '&redirect_uri=' + this.redirectURI
-    this.apiURL += '&state=' + this.state
+    this.naverLoginURL += '&client_id=' + this.CLIENT_ID
+    this.naverLoginURL += '&redirect_uri=' + this.redirectURI
+    this.naverLoginURL += '&state=' + this.state
   }
 }
 </script>
