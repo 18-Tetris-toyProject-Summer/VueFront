@@ -187,7 +187,7 @@ export default {
       breakFlag: false,
       myScore: 0,
       gameOverFlag: false
-    }
+    };
   },
   watch: {
     // curPosition: {
@@ -200,44 +200,44 @@ export default {
   },
   methods: {
     close () {
-      this.$EventBus.$emit('close')
+      this.$EventBus.$emit('close');
     },
     checkLine () {
-      let checkPoint = 0
-      let multiPoint = 0
+      let checkPoint = 0;
+      let multiPoint = 0;
       for (let i = 1; i < 20; i++) {
         for (let j = 0; j < 10; j++) {
           if (this.tetrisBoard[i][j] !== 0 && this.tetrisBoard[i][j] !== '.') {
-            checkPoint++
+            checkPoint++;
           }
           if (checkPoint === 10) {
-            this.tetrisBoard.splice(i, 1)
-            this.tetrisBoard.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-            multiPoint++
+            this.tetrisBoard.splice(i, 1);
+            this.tetrisBoard.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+            multiPoint++;
           }
         }
-        checkPoint = 0
+        checkPoint = 0;
       }
       //  TODO multiPoint score++
-      this.myScore += multiPoint
+      this.myScore += multiPoint;
     },
     initTetrino () {
-      this.curType = this.nextType
-      this.curColor = this.nextColor
-      this.nextColor = Math.floor(Math.random() * (8 - 1)) + 1
-      this.nextType = Math.floor(Math.random() * (8 - 1))
-      this.curPosition.x = 0
-      this.curPosition.y = 4
-      this.paintingNextTetrino()
+      this.curType = this.nextType;
+      this.curColor = this.nextColor;
+      this.nextColor = Math.floor(Math.random() * (8 - 1)) + 1;
+      this.nextType = Math.floor(Math.random() * (8 - 1));
+      this.curPosition.x = 0;
+      this.curPosition.y = 4;
+      this.paintingNextTetrino();
     },
     paintingNextTetrino () {
       for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
           if (j < 3) {
-            this.nextTetrisBoard[i + 1][j + 1] = 0
+            this.nextTetrisBoard[i + 1][j + 1] = 0;
           }
           if (this.tetrisData[this.nextType][0] & (0x8000 >> i * 4 + j)) {
-            this.nextTetrisBoard[i + 1][j + 1] = this.nextColor
+            this.nextTetrisBoard[i + 1][j + 1] = this.nextColor;
           }
         }
       }
@@ -245,7 +245,7 @@ export default {
     painting (value) {
       for (let i = 0; i < 4; i++) {
         if (this.breakFlag) {
-          break
+          break;
         }
         for (let j = 0; j < 4; j++) {
           //  FIXME 고정되어 있는 배경에 부딛혔을 때 처리해줘야 함.
@@ -254,107 +254,107 @@ export default {
               if ((this.tetrisBoard[this.curPosition.x + i][this.curPosition.y + j] !== 0 &&
                 this.tetrisBoard[this.curPosition.x + i][this.curPosition.y + j] !== '.') ||
                 this.curPosition.x + i + 1 === 21) {
-                this.breakFlag = true
+                this.breakFlag = true;
                 if (this.curPosition.x === 1 && value === 'isCrashFirst') {
-                  this.gameOverFlag = true
-                  this.stopGame()
+                  this.gameOverFlag = true;
+                  this.stopGame();
                   // this.gameOverFlag = false
                 }
-                break
+                break;
               }
             } else if (value) {
-              this.tetrisBoard[this.curPosition.x + i][this.curPosition.y + j] = value
+              this.tetrisBoard[this.curPosition.x + i][this.curPosition.y + j] = value;
             }
-            if (this.maxY < this.curPosition.y + j) this.maxY = this.curPosition.y + j
-            if (this.minY > this.curPosition.y + j) this.minY = this.curPosition.y + j
+            if (this.maxY < this.curPosition.y + j) this.maxY = this.curPosition.y + j;
+            if (this.minY > this.curPosition.y + j) this.minY = this.curPosition.y + j;
           }
         }
       }
     },
     paintTetris (value) {
-      this.maxY = 0
-      this.minY = 10
-      this.painting('.')
+      this.maxY = 0;
+      this.minY = 10;
+      this.painting('.');
       if (value === 38) { //  Up
-        this.curRotation = (this.curRotation + 1) % 4
-        this.painting('isCrash')
+        this.curRotation = (this.curRotation + 1) % 4;
+        this.painting('isCrash');
         //  FIXME 제일 우축일때 회전이 부자연 스러움.
         if (this.maxY > 9 || this.minY < 0 || this.breakFlag === true) {
-          this.curRotation = (this.curRotation - 1) % 4
-          if (this.curRotation === -1) this.curRotation = 3
-          this.breakFlag = false
-          this.painting(this.curColor)
+          this.curRotation = (this.curRotation - 1) % 4;
+          if (this.curRotation === -1) this.curRotation = 3;
+          this.breakFlag = false;
+          this.painting(this.curColor);
         }
       } else if (value === 37 && this.minY > 0) { //  Left
-        this.curPosition.y--
-        this.painting('isCrash')
+        this.curPosition.y--;
+        this.painting('isCrash');
         if (this.breakFlag === true) {
-          this.breakFlag = false
-          this.curPosition.y++
+          this.breakFlag = false;
+          this.curPosition.y++;
         }
       } else if (value === 39 && this.maxY < 9) { //  Right
-        this.curPosition.y++
-        this.painting('isCrash')
+        this.curPosition.y++;
+        this.painting('isCrash');
         if (this.breakFlag === true) {
-          this.breakFlag = false
-          this.curPosition.y--
+          this.breakFlag = false;
+          this.curPosition.y--;
         }
       } else if (value === 40) { //  Down
-        this.curPosition.x++
-        this.painting('isCrashFirst')
+        this.curPosition.x++;
+        this.painting('isCrashFirst');
         if (this.breakFlag === true) {
           //  TODO 게임오버 멈추는 로직
-          this.curPosition.x--
-          this.breakFlag = false
-          this.painting(this.curColor)
-          this.checkLine()
-          this.initTetrino()
+          this.curPosition.x--;
+          this.breakFlag = false;
+          this.painting(this.curColor);
+          this.checkLine();
+          this.initTetrino();
         }
       } else if (value === 32) { // Space-bar
         while (true) {
           //  FIXME 최선인가? 한번에 내려서 확인하자
-          this.curPosition.x++
-          this.painting('isCrashFirst')
+          this.curPosition.x++;
+          this.painting('isCrashFirst');
           if (this.breakFlag === true) {
-            this.curPosition.x--
-            this.breakFlag = false
-            this.painting(this.curColor)
-            this.checkLine()
-            this.initTetrino()
-            break
+            this.curPosition.x--;
+            this.breakFlag = false;
+            this.painting(this.curColor);
+            this.checkLine();
+            this.initTetrino();
+            break;
           }
         }
       }
-      this.painting(this.curColor)
-      this.tetrisBoard[20].push(1)
+      this.painting(this.curColor);
+      this.tetrisBoard[20].push(1);
     },
     keydownEvent (event) {
-      this.paintTetris(event.keyCode)
+      this.paintTetris(event.keyCode);
     },
     startGame () {
-      this.nextColor = Math.floor(Math.random() * (8 - 1)) + 1
-      this.nextType = Math.floor(Math.random() * (8 - 1))
-      this.initTetrino()
-      this.painting(this.curColor)
+      this.nextColor = Math.floor(Math.random() * (8 - 1)) + 1;
+      this.nextType = Math.floor(Math.random() * (8 - 1));
+      this.initTetrino();
+      this.painting(this.curColor);
       this.gameflag = setInterval(() => {
         //  한 줄씩 떨어지게 만든다.
-        this.paintTetris(40)
-      }, 1000)
+        this.paintTetris(40);
+      }, 1000);
     },
     stopGame () {
-      window.removeEventListener('keydown', this.keydownEvent)
-      clearInterval(this.gameflag)
+      window.removeEventListener('keydown', this.keydownEvent);
+      clearInterval(this.gameflag);
     }
   },
   created () {
     //  FIXME 채팅후 모두 레디되면 시작 이런거
-    window.addEventListener('keydown', this.keydownEvent)
-    this.startGame()
+    window.addEventListener('keydown', this.keydownEvent);
+    this.startGame();
   },
   destroyed () {
-    this.stopGame()
+    this.stopGame();
   }
-}
+};
 </script>
 
 <style scoped>

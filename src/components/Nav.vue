@@ -31,9 +31,9 @@ export default {
   data () {
     return {
       LoginStatus: false
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>

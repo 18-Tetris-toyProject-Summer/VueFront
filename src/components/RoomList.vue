@@ -13,17 +13,17 @@ export default {
   name: 'RoomList',
   methods: {
     openRoom () {
-      this.$EventBus.$emit('open')
+      this.$EventBus.$emit('open');
     }
   },
   created () {
     window.onkeydown = function (event) {
       if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40 || event.keyCode === 32) {
-        event.preventDefault()
+        event.preventDefault();
       }
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
