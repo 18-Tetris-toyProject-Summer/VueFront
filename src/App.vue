@@ -9,17 +9,17 @@
 </template>
 
 <script>
-import Nav from './components/Nav'
-import Footer from './components/Footer'
-import Modal from './components/TetrisModal'
-import SubNav from './components/SubNav'
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Modal from './components/TetrisModal';
+import SubNav from './components/SubNav';
 
 export default {
   name: 'App',
   data () {
     return {
       modalToggle: false
-    }
+    };
   },
   components: {
     Nav,
@@ -29,13 +29,13 @@ export default {
   },
   created () {
     this.$EventBus.$on('close', () => {
-      this.modalToggle = false
-    })
+      this.modalToggle = false;
+    });
     this.$EventBus.$on('open', () => {
-      this.modalToggle = true
-    })
+      this.modalToggle = true;
+    });
   }
-}
+};
 </script>
 
 <style>

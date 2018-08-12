@@ -18,16 +18,16 @@ export default {
       //  FIXME state 값 random string 으로 변경
       state: 123,
       naverLoginURL: 'https://nid.naver.com/oauth2.0/authorize?response_type=code'
-    }
+    };
   },
   methods: {
   },
   created () {
-    this.naverLoginURL += '&client_id=' + this.CLIENT_ID
-    this.naverLoginURL += '&redirect_uri=' + this.redirectURI
-    this.naverLoginURL += '&state=' + this.state
+    this.naverLoginURL += '&client_id=' + this.CLIENT_ID;
+    this.naverLoginURL += '&redirect_uri=' + this.redirectURI;
+    this.naverLoginURL += '&state=' + this.state;
   }
-}
+};
 </script>
 
 <style scoped>
